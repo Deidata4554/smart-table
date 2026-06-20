@@ -20,12 +20,14 @@ export const initPagination = ({ pages, fromRow, toRow, totalRows }, createPage)
         });
     };
 
+    const pageTemplate = pages.firstElementChild.cloneNode(true);
+
     const updatePagination = (total, { page, limit }) => {
         pageCount = Math.ceil(total / limit);
 
         const visiblePages = getPages(page, pageCount, 5);
         pages.replaceChildren(...visiblePages.map(pageNumber => {
-            const el = pages.firstElementChild.cloneNode(true);
+            const el = pageTemplate.cloneNode(true);
             return createPage(el, pageNumber, pageNumber === page);
         }));
 

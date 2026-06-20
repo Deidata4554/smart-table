@@ -13,7 +13,7 @@ export function initTable(settings, onAction) {
 
     before.reverse().forEach(subName => { 
         root[subName] = cloneTemplate(subName);  
-        root.container.insertBefore(root[subName].container, root.elements.rows);
+        root.container.prepend(root[subName].container);
     });
 
     after.forEach(subName => { 
